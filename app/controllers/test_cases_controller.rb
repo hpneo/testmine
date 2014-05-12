@@ -20,6 +20,21 @@ class TestCasesController < ApplicationController
     render :new, layout: use_layout
   end
 
+  def create
+    @test_case = TestCase.new
+    @test_case.title = params[:test_case][:title]
+    @test_case.summary = params[:test_case][:summary]
+    @test_case.preconditions = params[:test_case][:preconditions]
+    @test_case.status = params[:test_case][:status]
+    @test_case.importance = params[:test_case][:importance]
+    @test_case.execution_time = params[:test_case][:execution_time]
+    @test_case.test_suite_id = params[:test_case][:test_suite_id]
+
+    if @test_case.save
+      render 'create.js'
+    end
+  end
+
   private
   def find_project
     identifier = params[:project_id]

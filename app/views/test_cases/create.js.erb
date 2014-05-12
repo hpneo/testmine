@@ -1,0 +1,5 @@
+$("#test_suite_<%= @test_case.test_suite_id %>").find('ul').append('<li id="test_case_<%= @test_case.id %>"><h5><%= @test_case.title %></h5></li>');
+
+if (window.currentModal) {
+  window.currentModal.close();
+}
