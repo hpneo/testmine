@@ -1,0 +1,19 @@
+<%= labelled_form_for @test_case, remote: true do |f| %>
+  <p>
+    <%= f.text_field :title, label: 'Test Case Title' %>
+  </p>
+  <p>
+    <%= f.text_area :summary, label: 'Summary', rows: 5 %>
+  </p>
+  <p>
+    <%= f.text_area :preconditions, label: 'Preconditions', rows: 5 %>
+  </p>
+  <p class="inline">
+    <%= f.select :status, options_for_select([["Dropdown", ""], "", ""]), label: 'Status' %>
+    <%= f.select :importance, options_for_select([["Dropdown", ""], "", ""]), label: 'Importance' %>
+    <%= f.number_field :execution_time, label: 'Time Exec (min)' %>
+  </p>
+
+  <%= f.hidden_field :test_suite_id %>
+  <%= submit_tag 'Save' %>
+<% end %>

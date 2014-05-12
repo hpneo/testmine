@@ -1,0 +1,39 @@
+#overlay {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 111;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+div.modal {
+  display: block;
+  position: fixed;
+  margin: 0 auto;
+  padding: 20px;
+  color: #454545;
+  border-radius: 0px;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+div.modal label {
+  display: block;
+}
+
+div.modal .inline label {
+  display: inline-block;
+}
+
+div.modal input[type="text"],
+div.modal textarea {
+  width: 100%;
+}

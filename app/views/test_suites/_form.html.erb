@@ -1,0 +1,11 @@
+<%= labelled_form_for @test_suite, remote: true do |f| %>
+  <p>
+    <%= f.text_field :name, label: 'Test Suite Name' %>
+  </p>
+  <p>
+    <%= f.text_area :description, label: 'Details', rows: 5 %>
+  </p>
+  
+  <%= f.hidden_field :project_id %>
+  <%= submit_tag 'Save' %>
+<% end %>

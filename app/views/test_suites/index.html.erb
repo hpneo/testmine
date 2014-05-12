@@ -1,0 +1,33 @@
+<h2>Test</h2>
+
+<h3>
+  <%= @project.name %> (<%= @project.test_cases.count %>)
+  <a href="<%= new_test_suite_path(@project) %>" class="show-new-test-suite"><small>Create test suite</small></a>
+</h3>
+<ul id="project_test_suites">
+<% @project.test_suites.each do |test_suite| %>
+  <li id="test_suite_<%= test_suite.id %>">
+    <h4>
+      <%= test_suite.name %> (<%= test_suite.test_cases.count %>)
+      <a href="<%= new_test_case_path(@project, test_suite) %>" class="show-new-test-case"><small>Create test case</small></a>
+    </h4>
+    <ul>
+      <% test_suite.test_cases.each do |test_case| %>
+        <li id="test_case_<%= test_case.id %>"><h5><%= test_case.title %></h5></li>
+      <% end %>
+    </ul>
+  </li>
+<% end %>
+</ul>
+
+<script type="text/html" id="new-test-suite-modal-content">
+  <%= render 'test_suites/form' %>
+</script>
+<script type="text/html" id="new-test-case-modal-content">
+</script>
+
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag 'modal', :plugin => 'testmine' %>
+  <%= javascript_include_tag 'modal', :plugin => 'testmine' %>
+  <%= javascript_include_tag 'testmine', :plugin => 'testmine' %>
+<% end %>

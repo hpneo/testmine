@@ -1,0 +1,5 @@
+$("#project_test_suites").append('<li id="test_suite_<%= @test_suite.id %>"><h4><%= @test_suite.name %> (<%= @test_suite.test_cases.count %>)</h4><ul></ul></li>');
+
+if (window.currentModal) {
+  window.currentModal.close();
+}
