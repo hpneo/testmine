@@ -37,3 +37,43 @@ div.modal input[type="text"],
 div.modal textarea {
   width: 100%;
 }
+
+div.modal label#test_case_step_step_order,
+div.modal input.test_case_step_step_order {
+  display: inline-block;
+  width: 40px;
+}
+
+div.modal label#test_case_step_action,
+div.modal input.test_case_step_action {
+  display: inline-block;
+  width: 200px;
+}
+
+div.modal label#test_case_step_results,
+div.modal input.test_case_step_results {
+  display: inline-block;
+  width: 200px;
+}
+
+div.modal label#test_case_step_step_order {
+  width: 44px;
+}
+
+div.modal label#test_case_step_action {
+  width: 204px;
+}
+
+div.modal label#test_case_step_results {
+  width: 204px;
+}
+
+div.modal .test_case_step label {
+  display: none;
+}
+
+div.modal .test_case_step img {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px;
+}

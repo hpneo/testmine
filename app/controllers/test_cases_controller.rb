@@ -21,14 +21,13 @@ class TestCasesController < ApplicationController
   end
 
   def create
-    @test_case = TestCase.new
-    @test_case.title = params[:test_case][:title]
-    @test_case.summary = params[:test_case][:summary]
-    @test_case.preconditions = params[:test_case][:preconditions]
-    @test_case.status = params[:test_case][:status]
-    @test_case.importance = params[:test_case][:importance]
-    @test_case.execution_time = params[:test_case][:execution_time]
-    @test_case.test_suite_id = params[:test_case][:test_suite_id]
+    params[:test_case][:test_case_steps_attributes].each do |i, attrs|
+      if attrs[:action].blank? || attrs[:results].blank?
+        params[:test_case][:test_case_steps_attributes].delete(i)
+      end
+    end
+
+    @test_case = TestCase.new(params[:test_case])
 
     if @test_case.save
       render 'create.js'

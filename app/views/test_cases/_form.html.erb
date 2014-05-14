@@ -14,6 +14,24 @@
     <%= f.number_field :execution_time, label: 'Time Exec (min)' %>
   </p>
 
+  <div id="test_case_steps">
+    <label id="test_case_step_step_order">#</label>
+    <label id="test_case_step_action">Steps Actions</label>
+    <label id="test_case_step_results">Expect Results</label>
+    <%= f.fields_for :test_case_steps do |step_fields| %>
+      <div class="test_case_step" <%= step_fields.object.persisted? ? "id=\"#{step_fields.object.id}\"" : "" %>>
+        <%= step_fields.number_field :step_order, label: '', class: 'test_case_step_step_order' %>
+        <%= step_fields.text_field :action, label: '', class: 'test_case_step_action' %>
+        <%= step_fields.text_field :results, label: '', class: 'test_case_step_results' %>
+        <% if @test_case.test_case_steps.index(step_fields.object) == @test_case.test_case_steps.size - 1 %>
+          <a href="#" class="add_test_case_step"><%= image_tag('add.png', plugin: 'testmine', width: 16) %></a>
+        <% else %>
+          <a href="#" class="remove_test_case_step"><%= image_tag('remove.png', plugin: 'testmine', width: 16) %></a>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
   <%= f.hidden_field :test_suite_id %>
   <%= submit_tag 'Save' %>
 <% end %>
