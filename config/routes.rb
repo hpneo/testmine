@@ -4,3 +4,4 @@ post '/projects/:project_id/test_suites', :to => 'test_suites#create', as: 'test
 
 get '/projects/:project_id/test_suites/:test_suite_id/test_cases', :to => 'test_cases#index', as: 'test_cases'
 get '/projects/:project_id/test_suites/:test_suite_id/test_cases/new', :to => 'test_cases#new', as: 'new_test_case'
+post '/projects/:project_id/test_suites/:test_suite_id/test_cases', :to => 'test_cases#create', as: 'test_cases'
