@@ -3,7 +3,7 @@
     <span>
       <%= test_suite.name %> <a href="#" class="show_menu">(<%= test_suite.test_cases.count %>)</a>
     </span>
-    <ul>
+    <ul class="menu">
       <li>
         <a href="<%= test_suite_path(@project, test_suite) %>" class="show-test-suite">
           View test suite
@@ -24,7 +24,7 @@
       </li>
     </ul>
   </h4>
-  <ul>
+  <ul class="test_suite_test_cases">
     <%= render partial: 'test_cases/show', collection: test_suite.test_cases, as: :test_case, locals: { test_suite_id: test_suite.id } %>
   </ul>
 </li>

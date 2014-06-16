@@ -5,6 +5,12 @@ $(function() {
     var menu = $(this).parents('h4').find('ul');
     menu.slideToggle();
   });
+  $(document).on('click', '.test_suite_test_cases h5', function(e) {
+    e.preventDefault();
+
+    var menu = $(this).siblings('ul');
+    menu.slideToggle();
+  });
 
   $(document).on('click', '.show-test-suite', function(e) {
     e.preventDefault();
@@ -42,6 +48,17 @@ $(function() {
     xhr.done(function(data) {
       $('#new-test-case-modal-content').html(data);
       window.currentModal = Modal.show('new-test-case');
+    });
+  });
+
+  $(document).on('click', '.show-test-case', function(e) {
+    e.preventDefault();
+
+    var xhr = $.get($(this).attr('href'), { use_layout: false });
+
+    xhr.done(function(data) {
+      $('#show-test-case-modal-content').html(data);
+      window.currentModal = Modal.show('show-test-case');
     });
   });
 

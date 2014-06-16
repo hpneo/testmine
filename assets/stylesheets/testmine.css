@@ -38,11 +38,12 @@
   list-style: none;
 }
 
-#project_test_suites h4 {
+#project_test_suites h4,
+.test_suite_test_cases > li {
   position: relative;
 }
 
-#project_test_suites h4 ul {
+#project_test_suites ul.menu {
   display: none;
   position: absolute;
   left: 100%;

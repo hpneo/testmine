@@ -11,6 +11,11 @@ class TestCasesController < ApplicationController
   def index
   end
 
+  def show
+    @title = "View Test Case"
+    edit
+  end
+
   def new
     @test_case = TestCase.new(test_suite_id: params[:test_suite_id])
 
