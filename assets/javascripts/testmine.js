@@ -6,6 +6,17 @@ $(function() {
     menu.slideToggle();
   });
 
+  $(document).on('click', '.show-test-suite', function(e) {
+    e.preventDefault();
+
+    var xhr = $.get($(this).attr('href'), { use_layout: false });
+
+    xhr.done(function(data) {
+      $('#show-test-suite-modal-content').html(data);
+      window.currentModal = Modal.show('show-test-suite');
+    });
+  });
+
   $(document).on('click', '.show-new-test-suite', function(e) {
     e.preventDefault();
 

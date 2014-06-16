@@ -1,8 +1,12 @@
 <h3>
-  <% if @test_suite.persisted? %>
-    Edit Test Suite
+  <% if @title.present? %>
+    <%= @title %>
   <% else %>
-    New Test Suite
+    <% if @test_suite.persisted? %>
+      Edit Test Suite
+    <% else %>
+      New Test Suite
+    <% end %>
   <% end %>
 </h3>
 <%= labelled_form_for @test_suite, remote: true do |f| %>

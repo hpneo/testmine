@@ -8,6 +8,11 @@ class TestSuitesController < ApplicationController
     @test_suite = TestSuite.new(project_id: @project.id)
   end
 
+  def show
+    @title = "View Test Suite"
+    edit
+  end
+
   def new
     @test_suite = TestSuite.new(project_id: @project.id)
 
