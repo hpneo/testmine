@@ -1,11 +1,19 @@
+<h3>
+  <% if @test_suite.persisted? %>
+    Edit Test Suite
+  <% else %>
+    New Test Suite
+  <% end %>
+</h3>
 <%= labelled_form_for @test_suite, remote: true do |f| %>
   <p>
-    <%= f.text_field :name, label: 'Test Suite Name' %>
+    <%= f.text_field :name, label: 'Name' %>
   </p>
   <p>
-    <%= f.text_area :description, label: 'Details', rows: 5 %>
+    <%= f.text_area :summary, label: 'Details', rows: 5 %>
   </p>
   
   <%= f.hidden_field :project_id %>
   <%= submit_tag 'Save' %>
+  <input type="reset" value="Cancelar" class="close-modal" />
 <% end %>

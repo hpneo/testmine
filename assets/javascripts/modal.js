@@ -34,7 +34,11 @@ var Modal = function Modal(options) {
       return true;
     }
     
-    if ($(target).attr('id') === 'overlay') {
+    if ($(target).is('#overlay')) {
+      self.close();
+    }
+
+    if ($(target).is('.close-modal')) {
       self.close();
     }
 

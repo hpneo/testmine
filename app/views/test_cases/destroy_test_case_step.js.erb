@@ -1,0 +1,5 @@
+var testCaseStep = $('.test_case_step#test_case_step_<%= @test_case_step.id %>');
+var testCaseStepHidden = testCaseStep.next('[type="hidden"]');
+
+testCaseStep.remove();
+testCaseStepHidden.remove();

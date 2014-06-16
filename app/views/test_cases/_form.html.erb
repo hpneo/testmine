@@ -1,37 +1,69 @@
+<h3>
+  <% if @test_case.persisted? %>
+    Edit Test Case
+  <% else %>
+    New Test Case
+  <% end %>
+</h3>
 <%= labelled_form_for @test_case, remote: true do |f| %>
   <p>
-    <%= f.text_field :title, label: 'Test Case Title' %>
+    <%= f.text_field :title, label: 'Title' %>
   </p>
   <p>
     <%= f.text_area :summary, label: 'Summary', rows: 5 %>
   </p>
   <p>
-    <%= f.text_area :preconditions, label: 'Preconditions', rows: 5 %>
+    <%= f.text_area :preconditions, label: 'Pre Conditions', rows: 5 %>
   </p>
-  <p class="inline">
-    <%= f.select :status, options_for_select([["Dropdown", ""], "", ""]), label: 'Status' %>
-    <%= f.select :importance, options_for_select([["Dropdown", ""], "", ""]), label: 'Importance' %>
-    <%= f.number_field :execution_time, label: 'Time Exec (min)' %>
+  <p>
+    <%= f.select :document_id, options_from_collection_for_select(Document.all, :id, :title), label: 'Document' %>
   </p>
-
+  <div class="two-columns">
+    <div class="column">
+      <p>
+        <%= f.select :test_case_status_id, options_from_collection_for_select(TestCaseStatus.all, :id, :name), label: 'Status' %>
+      </p>
+      <p>
+        <%= f.select :test_case_execution_type_id, options_from_collection_for_select(TestCaseExecutionType.all, :id, :name), label: 'Type' %>
+      </p>
+    </div>
+    <div class="column">
+      <p>
+        <%= f.select :test_case_importance_id, options_from_collection_for_select(TestCaseImportance.all, :id, :name), label: 'Importance' %>
+      </p>
+      <p>
+        <%= f.number_field :duration, label: 'Time Exec. (min)' %>
+      </p>
+    </div>
+  </div>
   <div id="test_case_steps">
-    <label id="test_case_step_step_order">#</label>
+    <label id="test_case_step_item">#</label>
     <label id="test_case_step_action">Steps Actions</label>
-    <label id="test_case_step_results">Expect Results</label>
+    <label id="test_case_step_expected_result">Expected Result</label>
+    <label id="add_test_case_step"><a href="#" class="add_test_case_step"><%= image_tag('add.png', plugin: 'testmine', width: 16) %></a></label>
     <%= f.fields_for :test_case_steps do |step_fields| %>
-      <div class="test_case_step" <%= step_fields.object.persisted? ? "id=\"#{step_fields.object.id}\"" : "" %>>
-        <%= step_fields.number_field :step_order, label: '', class: 'test_case_step_step_order' %>
+      <div class="test_case_step" <%= step_fields.object.persisted? ? "id=\"test_case_step_#{step_fields.object.id}\"".html_safe : "" %>>
+        <%= step_fields.number_field :item, label: '', class: 'test_case_step_item' %>
         <%= step_fields.text_field :action, label: '', class: 'test_case_step_action' %>
-        <%= step_fields.text_field :results, label: '', class: 'test_case_step_results' %>
-        <% if @test_case.test_case_steps.index(step_fields.object) == @test_case.test_case_steps.size - 1 %>
-          <a href="#" class="add_test_case_step"><%= image_tag('add.png', plugin: 'testmine', width: 16) %></a>
-        <% else %>
-          <a href="#" class="remove_test_case_step"><%= image_tag('remove.png', plugin: 'testmine', width: 16) %></a>
-        <% end %>
+        <%= step_fields.text_field :expected_result, label: '', class: 'test_case_step_expected_result' %>
+        <a href="#" class="remove_test_case_step"><%= image_tag('remove.png', plugin: 'testmine', width: 16) %></a>
       </div>
     <% end %>
   </div>
 
   <%= f.hidden_field :test_suite_id %>
   <%= submit_tag 'Save' %>
+  <input type="reset" value="Cancelar" class="close-modal" />
 <% end %>
+
+<script type="text/javascript">
+  var testCaseStepsURLS = <%= @test_case.test_case_steps.inject({}) { |hash, test_case_step|
+    if test_case_step.persisted?
+      hash[test_case_step.id] = delete_test_case_step_test_case_path(@project.identifier, @test_case.id, test_case_step_id: test_case_step.id, test_suite_id: @test_case.test_suite_id)
+    else
+      hash[test_case_step.id] = '#'
+    end
+    
+    hash
+  }.to_json.html_safe %>;
+</script>

@@ -1,0 +1,6 @@
+var testSuite = $("#test_suite_<%= @test_case.test_suite_id %>");
+testSuite.find('ul').find('li#test_case_<%= @test_case.id %>').replaceWith("<%= escape_javascript(render(partial: 'test_cases/show', locals: { test_case: @test_case, test_suite_id: @test_case.test_suite_id })) %>");
+
+if (window.currentModal) {
+  window.currentModal.close();
+}

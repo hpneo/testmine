@@ -1,0 +1,6 @@
+<li id="test_case_<%= test_case.id %>">
+  <h5><%= test_case.title %></h5>
+  <a href="<%= edit_test_case_path(@project.identifier, test_case.id, test_suite_id: test_suite_id) %>" class="show-edit-test-case">
+    <small>Edit test case</small>
+  </a>
+</li>

@@ -1,0 +1,18 @@
+<a href="<%= new_test_suite_path(@project) %>" class="show-new-test-suite"><small>New test suite</small></a>
+
+<ul id="project_test_suites">
+  <%= render partial: 'test_suites/show', collection: @project.test_suites, as: :test_suite %>
+</ul>
+
+<script type="text/html" id="new-test-suite-modal-content">
+  <%= render 'test_suites/form' %>
+</script>
+
+<script type="text/html" id="edit-test-suite-modal-content">
+</script>
+
+<script type="text/html" id="new-test-case-modal-content">
+</script>
+
+<script type="text/html" id="edit-test-case-modal-content">
+</script>

@@ -1,0 +1,32 @@
+<h2>Test</h2>
+
+<div id="tab_container">
+  <div class="tabs">
+    <ul>
+      <li><a href="#tab_planification">Planification</a></li>
+      <li><a href="#tab_execution">Execution</a></li>
+      <li><a href="#tab_reports">Reports</a></li>
+    </ul>
+  </div>
+  <div class="tab_pages">
+    <div class="tab_page" id="tab_planification">
+      <fieldset class="half">
+        <legend>Test Suite / Cases</legend>
+        <%= render partial: 'test_suites/index' %>
+      </fieldset>
+      <fieldset class="half">
+        <legend>Test Plans</legend>
+        <%= render partial: 'test_plans/index' %>
+      </fieldset>
+    </div>
+    <div class="tab_page" id="tab_execution"></div>
+    <div class="tab_page" id="tab_reports"></div>
+  </div>
+</div>
+
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag 'modal', :plugin => 'testmine' %>
+  <%= stylesheet_link_tag 'testmine', :plugin => 'testmine' %>
+  <%= javascript_include_tag 'modal', :plugin => 'testmine' %>
+  <%= javascript_include_tag 'testmine', :plugin => 'testmine' %>
+<% end %>

@@ -33,13 +33,39 @@ div.modal .inline label {
   display: inline-block;
 }
 
+.two-columns {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+
+.two-columns .column {
+  display: block;
+  float: left;
+  width: 50%;
+}
+
+.two-columns .column p {
+  margin-top: 0;
+}
+
+.two-columns p label {
+  display: inline-block;
+  width: 100px;
+}
+
 div.modal input[type="text"],
 div.modal textarea {
   width: 100%;
+  font-family: inherit;
 }
 
-div.modal label#test_case_step_step_order,
-div.modal input.test_case_step_step_order {
+div.modal input[type="number"] {
+  width: 100px;
+}
+
+div.modal label#test_case_step_item,
+div.modal input.test_case_step_item {
   display: inline-block;
   width: 40px;
 }
@@ -50,13 +76,24 @@ div.modal input.test_case_step_action {
   width: 200px;
 }
 
-div.modal label#test_case_step_results,
-div.modal input.test_case_step_results {
+div.modal label#test_case_step_expected_result,
+div.modal input.test_case_step_expected_result {
   display: inline-block;
   width: 200px;
 }
 
-div.modal label#test_case_step_step_order {
+div.modal label#add_test_case_step {
+  display: inline-block;
+  width: 16px;
+}
+
+div.modal label#add_test_case_step img {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
+div.modal label#test_case_step_item {
   width: 44px;
 }
 
@@ -64,7 +101,7 @@ div.modal label#test_case_step_action {
   width: 204px;
 }
 
-div.modal label#test_case_step_results {
+div.modal label#test_case_step_expected_result {
   width: 204px;
 }
 

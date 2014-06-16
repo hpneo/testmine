@@ -1,6 +1,11 @@
 class TestCase < ActiveRecord::Base
   unloadable
 
+  attr_accessor :test_suite_id
+  attr_accessible :test_suite_id, :title, :summary, :preconditions, :duration, :document_id
+  attr_accessible :test_case_status_id, :test_case_execution_type_id, :test_case_importance_id
+  attr_accessible :test_case_steps_attributes
+
   has_many :test_suite_test_cases
   has_many :test_suites, through: :test_suite_test_cases
   has_many :test_case_steps

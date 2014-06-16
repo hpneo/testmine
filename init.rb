@@ -12,15 +12,16 @@ Redmine::Plugin.register :testmine do
 
   permission :testmine,
     {
-      :test_suites => [:index, :new, :create],
-      :test_cases => [:index, :new, :create]
+      :testmine => [:index],
+      :test_suites => [:index, :show, :new, :edit, :create, :update, :destroy],
+      :test_cases => [:index, :show, :new, :edit, :create, :update, :destroy]
     },
     :public => true
 
   menu :project_menu,
-    :test_suites,
+    :testmine,
     {
-      :controller => 'test_suites',
+      :controller => 'testmine',
       :action => 'index'
     },
     :caption => 'Test',

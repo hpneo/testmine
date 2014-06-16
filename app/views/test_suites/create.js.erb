@@ -1,4 +1,4 @@
-$("#project_test_suites").append('<li id="test_suite_<%= @test_suite.id %>"><h4><%= @test_suite.name %> (<%= @test_suite.test_cases.count %>)</h4><ul></ul></li>');
+$("#project_test_suites").append("<%= escape_javascript(render(partial: 'test_suites/show', locals: { test_suite: @test_suite })) %>");
 
 if (window.currentModal) {
   window.currentModal.close();

@@ -1,0 +1,6 @@
+var testSuite = $("#test_suite_<%= @test_case.test_suite_id %>");
+testSuite.find('ul').find('li#test_case_<%= @test_case.id %>').remove();
+
+if (window.currentModal) {
+  window.currentModal.close();
+}
