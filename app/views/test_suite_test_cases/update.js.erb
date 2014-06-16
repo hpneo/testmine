@@ -1,0 +1,12 @@
+var previousTestSuite = $("#test_suite_<%= @previous_test_suite.id %>");
+var newTestSuite = $("#test_suite_<%= @test_suite_test_case.test_suite_id %>");
+
+previousTestSuite.find('ul').find('li#test_case_<%= @test_suite_test_case.test_case_id %>').remove();
+newTestSuite.find('ul').append("<%= escape_javascript(render(partial: 'test_cases/show', locals: { test_case: @test_suite_test_case.test_case, test_suite_id: @test_suite_test_case.test_suite_id })) %>");
+
+previousTestSuite.find('h4').find('span').html('<%= @previous_test_suite.name %> <a href="#" class="show_menu">(<%= @previous_test_suite.test_cases.count %>)</a>');
+newTestSuite.find('h4').find('span').html('<%= @new_test_suite.name %> <a href="#" class="show_menu">(<%= @new_test_suite.test_cases.count %>)</a>');
+
+if (window.currentModal) {
+  window.currentModal.close();
+}

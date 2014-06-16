@@ -3,8 +3,10 @@ scope '/projects/:project_id' do
   resources :test_cases do
     member do
       post :delete_test_case_step
+      get :move
     end
   end
+  resources :test_suite_test_cases
 end
 
 get '/projects/:project_id/test', :to => 'testmine#index', as: 'testmine_index'

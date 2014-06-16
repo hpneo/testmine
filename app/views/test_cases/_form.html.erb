@@ -9,7 +9,15 @@
     <% end %>
   <% end %>
 </h3>
-<%= labelled_form_for @test_case, remote: true do |f| %>
+<%
+  options = { remote: true }
+  if @test_case.persisted?
+    options[:url] = test_case_path(@project, @test_case)
+  else
+    options[:url] = new_test_case_path(@project)
+  end
+%>
+<%= labelled_form_for @test_case, options do |f| %>
   <p>
     <%= f.text_field :title, label: 'Title' %>
   </p>

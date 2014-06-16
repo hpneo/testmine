@@ -9,7 +9,15 @@
     <% end %>
   <% end %>
 </h3>
-<%= labelled_form_for @test_suite, remote: true do |f| %>
+<%
+  options = { remote: true }
+  if @test_suite.persisted?
+    options[:url] = test_suite_path(@project, @test_suite)
+  else
+    options[:url] = new_test_suite_path(@project)
+  end
+%>
+<%= labelled_form_for @test_suite, options do |f| %>
   <p>
     <%= f.text_field :name, label: 'Name' %>
   </p>

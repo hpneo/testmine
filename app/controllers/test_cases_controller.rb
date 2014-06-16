@@ -3,7 +3,7 @@ class TestCasesController < ApplicationController
 
   before_filter :find_project
   before_filter :find_test_suite
-  before_filter :authorize, except: [ :delete_test_case_step ]
+  before_filter :authorize, except: [ :delete_test_case_step, :move ]
   before_filter :clear_test_case_steps, only: [ :create, :update ]
 
   after_filter :append_to_test_suite, only: :create
@@ -67,6 +67,21 @@ class TestCasesController < ApplicationController
       TestSuiteTestCase.where(test_case_id: @test_case.id).destroy_all
       render 'destroy.js'
     end
+  end
+
+  def move
+    @test_suite_test_case = TestSuiteTestCase.where({
+      test_case_id: params[:id],
+      test_suite_id: params[:test_suite_id]
+    }).first
+
+    if params[:use_layout] == "yes"
+      use_layout = true
+    else
+      use_layout = false
+    end
+
+    render :move, layout: use_layout
   end
 
   def delete_test_case_step

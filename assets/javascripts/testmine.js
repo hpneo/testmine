@@ -62,6 +62,17 @@ $(function() {
     });
   });
 
+  $(document).on('click', '.show-move-test-case', function(e) {
+    e.preventDefault();
+
+    var xhr = $.get($(this).attr('href'), { use_layout: false });
+
+    xhr.done(function(data) {
+      $('#move-test-case-modal-content').html(data);
+      window.currentModal = Modal.show('move-test-case');
+    });
+  });
+
   $(document).on('click', '.show-edit-test-case', function(e) {
     e.preventDefault();
 
