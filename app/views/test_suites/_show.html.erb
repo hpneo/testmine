@@ -17,7 +17,7 @@
       <li>
         <%= link_to "Delete test suite", test_suite_path(@project, test_suite), method: :delete, remote: true, confirm: "¿Está seguro que desea eliminar #{test_suite.name}?" %>
       </li>
-      <li>
+      <li style="border-top: solid 1px #eee">
         <a href="<%= new_test_case_path(@project, test_suite_id: test_suite) %>" class="show-new-test-case">
           Create test case
         </a>
