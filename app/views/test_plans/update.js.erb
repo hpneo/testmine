@@ -1,0 +1,5 @@
+$('#test_plan_<%= @test_plan.id %>').find('h4 span').html('<%= @test_plan.title %> <a href="#" class="show_menu">(<%= @test_plan.test_cases.count %>)</a>');
+
+if (window.currentModal) {
+  window.currentModal.close();
+}

@@ -1,0 +1,29 @@
+<li id="test_plan_<%= test_plan.id %>">
+  <h4 title="<%= test_plan.summary %>">
+    <span>
+      <%= test_plan.title %> <a href="#" class="show_menu">(<%= test_plan.test_cases.count %>)</a>
+    </span>
+    <ul class="menu">
+      <li>
+        <a href="<%= test_plan_path(@project, test_plan) %>" class="show-test-plan">
+          View test plan
+        </a>
+      </li>
+      <li>
+        <a href="<%= edit_test_plan_path(@project, test_plan) %>" class="show-edit-test-plan">
+          Edit test plan
+        </a>
+      </li>
+      <li>
+        <%= link_to "Delete test plan", test_plan_path(@project, test_plan), method: :delete, remote: true, confirm: "Are you sure you want to delete \"#{test_plan.title}\" Test Plan?" %>
+      </li>
+      <li style="border-top: solid 1px #999">
+        <a href="<%= add_test_case_test_plan_path(@project, test_plan) %>" class="show-add-test-case">
+          Add test case
+        </a>
+      </li>
+    </ul>
+  </h4>
+  <ul class="test_plan_test_cases">
+  </ul>
+</li>

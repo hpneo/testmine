@@ -17,7 +17,7 @@
       </a>
     </li>
     <li>
-      <%= link_to "Delete test case", test_case_path(@project.identifier, test_case.id, test_suite_id: test_suite_id), method: :delete, remote: true, confirm: "Are you sure you want to delete \"#{test_case.title}\" Test Case?".html_safe %>
+      <%= link_to "Delete test case", test_case_path(@project.identifier, test_case.id, test_suite_id: test_suite_id), method: :delete, remote: true, confirm: "Are you sure you want to delete \"#{test_case.title}\" Test Case?" %>
     </li>
   </ul>
 </li>

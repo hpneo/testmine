@@ -14,7 +14,8 @@ Redmine::Plugin.register :testmine do
     {
       :testmine => [:index],
       :test_suites => [:index, :show, :new, :edit, :create, :update, :destroy],
-      :test_cases => [:index, :show, :new, :edit, :create, :update, :destroy]
+      :test_cases => [:index, :show, :new, :edit, :create, :update, :destroy],
+      :test_plans => [:index, :show, :new, :edit, :create, :update, :destroy]
     },
     :public => true
 

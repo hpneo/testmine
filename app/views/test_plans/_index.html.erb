@@ -1,0 +1,15 @@
+<a href="<%= new_test_plan_path(@project) %>" class="show-new-test-plan"><small>New test plan</small></a>
+
+<ul id="project_test_plans">
+  <%= render partial: 'test_plans/show', collection: @project.test_plans, as: :test_plan %>
+</ul>
+
+<script type="text/html" id="new-test-plan-modal-content">
+  <%= render 'test_plans/form' %>
+</script>
+
+<script type="text/html" id="show-test-plan-modal-content">
+</script>
+
+<script type="text/html" id="edit-test-plan-modal-content">
+</script>

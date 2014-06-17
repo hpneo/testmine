@@ -14,7 +14,7 @@
   if @test_case.persisted?
     options[:url] = test_case_path(@project, @test_case)
   else
-    options[:url] = new_test_case_path(@project)
+    options[:url] = test_cases_path(@project)
   end
 %>
 <%= labelled_form_for @test_case, options do |f| %>

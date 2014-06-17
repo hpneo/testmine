@@ -1,0 +1,5 @@
+$("#project_test_plans").append("<%= escape_javascript(render(partial: 'test_plans/show', locals: { test_plan: @test_plan })) %>");
+
+if (window.currentModal) {
+  window.currentModal.close();
+}

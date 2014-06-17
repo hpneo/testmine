@@ -28,26 +28,32 @@
   margin-left: 1%;
 }
 
-#test_case_document_id {
+#test_case_document_id,
+#test_plan_created_by_user_id,
+#test_plan_executed_by_user_id {
   width: 100%;
 }
 
-#project_test_suites {
+#project_test_suites,
+#project_test_plans {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 #project_test_suites h4,
-.test_suite_test_cases > li {
+.test_suite_test_cases > li,
+#project_test_plans h4,
+.test_plan_test_cases > li {
   position: relative;
 }
 
-#project_test_suites ul.menu {
+#project_test_suites ul.menu,
+#project_test_plans ul.menu {
   display: none;
   position: absolute;
-  left: 100%;
-  top: 0;
+  left: 0;
+  top: 100%;
   width: 120px;
   background: #fff;
   margin: 0;

@@ -7,7 +7,7 @@ module Testmine
         unloadable
 
         has_many :test_suites
-        has_many :test_cases, :through => :test_suites
+        has_many :test_plans
       end
     end
   end

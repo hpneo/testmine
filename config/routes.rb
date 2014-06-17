@@ -7,6 +7,11 @@ scope '/projects/:project_id' do
     end
   end
   resources :test_suite_test_cases
+  resources :test_plans do
+    member do
+      get :add_test_case
+    end
+  end
 end
 
 get '/projects/:project_id/test', :to => 'testmine#index', as: 'testmine_index'

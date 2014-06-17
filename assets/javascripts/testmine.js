@@ -119,6 +119,34 @@ $(function() {
     }
   });
 
+  $(document).on('click', '.show-test-plan', function(e) {
+    e.preventDefault();
+
+    var xhr = $.get($(this).attr('href'), { use_layout: false });
+
+    xhr.done(function(data) {
+      $('#show-test-plan-modal-content').html(data);
+      window.currentModal = Modal.show('show-test-plan');
+    });
+  });
+
+  $(document).on('click', '.show-new-test-plan', function(e) {
+    e.preventDefault();
+
+    window.currentModal = Modal.show('new-test-plan');
+  });
+
+  $(document).on('click', '.show-edit-test-plan', function(e) {
+    e.preventDefault();
+
+    var xhr = $.get($(this).attr('href'), { use_layout: false });
+
+    xhr.done(function(data) {
+      $('#edit-test-plan-modal-content').html(data);
+      window.currentModal = Modal.show('edit-test-plan');
+    });
+  });
+
   $(document).on('click', '.tabs a', function(e) {
     e.preventDefault();
 
