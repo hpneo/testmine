@@ -10,16 +10,11 @@
   </div>
   <div class="tab_pages">
     <div class="tab_page" id="tab_planification">
-      <fieldset class="half">
-        <legend>Test Suite / Cases</legend>
-        <%= render partial: 'test_suites/index' %>
-      </fieldset>
-      <fieldset class="half">
-        <legend>Test Plans</legend>
-        <%= render partial: 'test_plans/index' %>
-      </fieldset>
+      <%= render partial: 'planification' %>
     </div>
-    <div class="tab_page" id="tab_execution"></div>
+    <div class="tab_page" id="tab_execution">
+      <%= render partial: 'execution' %>
+    </div>
     <div class="tab_page" id="tab_reports"></div>
   </div>
 </div>

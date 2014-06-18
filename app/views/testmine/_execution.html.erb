@@ -1,0 +1,59 @@
+<fieldset>
+  <legend>Test Plan</legend>
+  <%= labelled_form_for TestPlan.new do |f| %>
+    <div class="two-columns">
+      <div class="column">
+        <p>
+          <%= select_tag('load_test_plan_id', options_from_collection_for_select(TestPlan.all, :id, :title), { prompt: '- Seleccione -' }) %>
+          <input type="button" id="load_test_plan" value="Load" />
+        </p>
+        <div class="two-columns">
+          <div class="column">
+            <p>
+              <%= f.date_select :start_on, label: 'Date Start', order: [ :day, :month, :year ] %>
+            </p>
+            <p>
+              <label for="test_plan_start_on">Time Start</label>
+              <%= f.time_select :start_on, label: false, ignore_date: true %>
+            </p>
+          </div>
+          <div class="column">
+            <p>
+              <%= f.date_select :finish_on, label: 'Date Finish', order: [ :day, :month, :year ] %>
+            </p>
+            <p>
+              <label for="test_plan_finish_on">Time Finish</label>
+              <%= f.time_select :finish_on, label: false, ignore_date: true %>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="two-columns">
+          <div class="column">
+            <%= f.text_area :summary, label: 'Summary', rows: 3 %>
+          </div>
+          <div class="column">
+            <%= f.select :test_plan_status_id, options_from_collection_for_select(TestPlanStatus.all, :id, :name), label: 'Status' %>
+            <%= submit_tag 'Save' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</fieldset>
+<div class="splitted-container">
+  <fieldset class="half">
+    <legend>Test Execution</legend>
+  </fieldset>
+  <fieldset class="half">
+    <legend>Test Case</legend>
+    <%= labelled_form_for @test_execution do |f| %>
+      <%= f.fields_for :test_case do |p| %>
+        <p>
+          <%= p.text_field :title, label: 'Title' %>
+        </p>
+      <% end %>
+    <% end %>
+  </fieldset>
+</div>

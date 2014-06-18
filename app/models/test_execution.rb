@@ -8,7 +8,13 @@ class TestExecution < ActiveRecord::Base
 
   before_save :set_executed_by
 
+  accepts_nested_attributes_for :test_case
+
   def set_executed_by
-    self.executed_by = User.current if self.test_plan.finished?
+    if self.test_plan
+      if self.test_plan.finished?
+        self.executed_by = User.current#self.test_plan.executed_by || User.current
+      end
+    end
   end
 end

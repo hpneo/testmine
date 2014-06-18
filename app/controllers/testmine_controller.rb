@@ -7,6 +7,8 @@ class TestmineController < ApplicationController
   def index
     @test_suite = TestSuite.new(project_id: @project.id)
     @test_plan = TestPlan.new(project_id: @project.id)
+    @test_execution = TestExecution.new
+    @test_execution.test_case = TestCase.new
   end
 
   private

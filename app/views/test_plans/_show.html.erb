@@ -25,5 +25,6 @@
     </ul>
   </h4>
   <ul class="test_plan_test_cases">
+    <%= render partial: 'test_cases/show', collection: test_plan.test_cases, as: :test_case, locals: { test_plan_id: test_plan.id } %>
   </ul>
 </li>

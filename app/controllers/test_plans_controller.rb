@@ -2,7 +2,7 @@ class TestPlansController < ApplicationController
   unloadable
 
   before_filter :find_project
-  before_filter :authorize
+  before_filter :authorize, except: [ :add_test_case ]
 
   def show
     @title = "View Test Plan"
@@ -47,6 +47,29 @@ class TestPlansController < ApplicationController
 
     if @test_plan.update_attributes(params[:test_plan])
       render 'update.js'
+    end
+  end
+
+  def add_test_case
+    @test_plan = TestPlan.find(params[:id])
+    @test_execution = TestExecution.new
+    @test_execution.test_plan_id = @test_plan.id
+
+    if params[:use_layout] == "yes"
+      use_layout = true
+    else
+      use_layout = false
+    end
+
+    render :add_test_case, layout: use_layout
+  end
+
+  def destroy
+    @test_plan = TestPlan.find(params[:id])
+
+    if @test_plan.destroy
+      TestExecution.where(test_plan_id: @test_plan.id).destroy_all
+      render 'destroy.js'
     end
   end
 

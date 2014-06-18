@@ -1,23 +1,34 @@
+<%
+  options = {}
+  if defined? test_suite_id
+    options[:test_suite_id] = test_suite_id
+  end
+  if defined? test_plan_id
+    options[:test_plan_id] = test_plan_id
+  end
+%>
 <li id="test_case_<%= test_case.id %>">
   <h5><%= test_case.title %></h5>
-  <ul class="menu">
-    <li>
-      <a href="<%= test_case_path(@project.identifier, test_case.id, test_suite_id: test_suite_id) %>" class="show-test-case">
-        View test case
-      </a>
-    </li>
-    <li>
-      <a href="<%= edit_test_case_path(@project.identifier, test_case.id, test_suite_id: test_suite_id) %>" class="show-edit-test-case">
-        Edit test case
-      </a>
-    </li>
-    <li>
-      <a href="<%= move_test_case_path(@project.identifier, test_case.id, test_suite_id: test_suite_id) %>" class="show-move-test-case">
-        Move test case
-      </a>
-    </li>
-    <li>
-      <%= link_to "Delete test case", test_case_path(@project.identifier, test_case.id, test_suite_id: test_suite_id), method: :delete, remote: true, confirm: "Are you sure you want to delete \"#{test_case.title}\" Test Case?" %>
-    </li>
-  </ul>
+  <% if options[:test_suite_id].present? %>
+    <ul class="menu">
+      <li>
+        <a href="<%= test_case_path(@project.identifier, test_case.id, options) %>" class="show-test-case">
+          View test case
+        </a>
+      </li>
+      <li>
+        <a href="<%= edit_test_case_path(@project.identifier, test_case.id, options) %>" class="show-edit-test-case">
+          Edit test case
+        </a>
+      </li>
+      <li>
+        <a href="<%= move_test_case_path(@project.identifier, test_case.id, options) %>" class="show-move-test-case">
+          Move test case
+        </a>
+      </li>
+      <li>
+        <%= link_to "Delete test case", test_case_path(@project.identifier, test_case.id, options), method: :delete, remote: true, confirm: "Are you sure you want to delete \"#{test_case.title}\" Test Case?" %>
+      </li>
+    </ul>
+  <% end %>
 </li>

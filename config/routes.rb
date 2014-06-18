@@ -12,6 +12,7 @@ scope '/projects/:project_id' do
       get :add_test_case
     end
   end
+  resources :test_executions
 end
 
 get '/projects/:project_id/test', :to => 'testmine#index', as: 'testmine_index'

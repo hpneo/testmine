@@ -1,5 +1,6 @@
 var testSuite = $("#test_suite_<%= @test_case.test_suite_id %>");
-testSuite.find('ul').append("<%= escape_javascript(render(partial: 'test_cases/show', locals: { test_case: @test_case, test_suite_id: @test_case.test_suite_id })) %>");
+var testSuiteTestCases = testSuite.find('.test_suite_test_cases');
+testSuiteTestCases.append("<%= escape_javascript(render(partial: 'test_cases/show', locals: { test_case: @test_case, test_suite_id: @test_case.test_suite_id })) %>");
 testSuite.find('h4').find('span').html('<%= @test_suite.name %> <a href="#" class="show_menu">(<%= @test_suite.test_cases.count %>)</a>');
 
 if (window.currentModal) {

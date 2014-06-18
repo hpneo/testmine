@@ -1,0 +1,10 @@
+<h3>Add Test Case</h3>
+
+<%= labelled_form_for @test_execution, remote: true do |f| %>
+  <p>
+    <%= f.select :test_case_id, option_groups_from_collection_for_select(@project.test_suites, :test_cases, :name, :id, :title, @test_execution.test_case_id), { label: 'Select Test Case' }, { size: 3 } %>
+  </p>
+  <%= f.hidden_field :test_plan_id %>
+  <%= submit_tag 'Save' %>
+  <input type="reset" value="Cancelar" class="close-modal" />
+<% end %>

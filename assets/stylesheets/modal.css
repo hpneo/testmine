@@ -33,27 +33,6 @@ div.modal .inline label {
   display: inline-block;
 }
 
-.two-columns {
-  display: block;
-  width: 100%;
-  overflow: hidden;
-}
-
-.two-columns .column {
-  display: block;
-  float: left;
-  width: 50%;
-}
-
-.two-columns .column p {
-  margin-top: 0;
-}
-
-.two-columns p label {
-  display: inline-block;
-  width: 100px;
-}
-
 div.modal input[type="text"],
 div.modal textarea {
   width: 100%;

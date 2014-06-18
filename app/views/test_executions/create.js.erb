@@ -1,0 +1,4 @@
+var testPlan = $('#test_plan_<%= @test_execution.test_plan_id %>');
+var testPlanTestCases = testPlan.find('.test_plan_test_cases');
+testPlanTestCases.append("<%= escape_javascript(render(partial: 'test_cases/show', locals: { test_case: @test_case, test_plan_id: @test_execution.test_plan_id })) %>");
+testPlan.find('h4').find('span').html('<%= @test_plan.title %> <a href="#" class="show_menu">(<%= @test_plan.test_cases.count %>)</a>');
