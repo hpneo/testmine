@@ -1,59 +1,20 @@
-<fieldset>
+<fieldset id="test_plan_loader">
   <legend>Test Plan</legend>
-  <%= labelled_form_for TestPlan.new do |f| %>
-    <div class="two-columns">
-      <div class="column">
-        <p>
-          <%= select_tag('load_test_plan_id', options_from_collection_for_select(TestPlan.all, :id, :title), { prompt: '- Seleccione -' }) %>
-          <input type="button" id="load_test_plan" value="Load" />
-        </p>
-        <div class="two-columns">
-          <div class="column">
-            <p>
-              <%= f.date_select :start_on, label: 'Date Start', order: [ :day, :month, :year ] %>
-            </p>
-            <p>
-              <label for="test_plan_start_on">Time Start</label>
-              <%= f.time_select :start_on, label: false, ignore_date: true %>
-            </p>
-          </div>
-          <div class="column">
-            <p>
-              <%= f.date_select :finish_on, label: 'Date Finish', order: [ :day, :month, :year ] %>
-            </p>
-            <p>
-              <label for="test_plan_finish_on">Time Finish</label>
-              <%= f.time_select :finish_on, label: false, ignore_date: true %>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        <div class="two-columns">
-          <div class="column">
-            <%= f.text_area :summary, label: 'Summary', rows: 3 %>
-          </div>
-          <div class="column">
-            <%= f.select :test_plan_status_id, options_from_collection_for_select(TestPlanStatus.all, :id, :name), label: 'Status' %>
-            <%= submit_tag 'Save' %>
-          </div>
-        </div>
-      </div>
-    </div>
-  <% end %>
+  <p>
+    <%= select_tag('load_test_plan_id', options_from_collection_for_select(TestPlan.all, :id, :title), { prompt: '- Seleccione -' }) %>
+    <input type="button" id="load_test_plan" value="Load" />
+  </p>
+  <%= render partial: 'testmine/test_plan_form', locals: { test_plan: TestPlan.new } %>
 </fieldset>
 <div class="splitted-container">
-  <fieldset class="half">
+  <fieldset class="half" id="test_plan_panel">
     <legend>Test Execution</legend>
+    <div id="test_plan_content">
+      <h3>Please, select a Test Plan</h3>
+    </div>
   </fieldset>
-  <fieldset class="half">
+  <fieldset class="half" id="test_execution_form">
     <legend>Test Case</legend>
-    <%= labelled_form_for @test_execution do |f| %>
-      <%= f.fields_for :test_case do |p| %>
-        <p>
-          <%= p.text_field :title, label: 'Title' %>
-        </p>
-      <% end %>
-    <% end %>
+    <%= render partial: 'test_executions/form', locals: { test_execution: @test_execution } %>
   </fieldset>
 </div>

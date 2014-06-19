@@ -1,0 +1,10 @@
+<dl id="test_plan_test_executions">
+  <dt><%= test_plan.title %> (<%= test_plan.test_executions.count %>)</dt>
+  <% test_plan.test_executions.each do |test_execution| %>
+    <dd>
+      <a href="<%= testmine_test_execution_path(@project, test_execution) %>">
+        <%= test_execution.test_case.title %>
+      </a>
+    </dd>
+  <% end %>
+</dl>

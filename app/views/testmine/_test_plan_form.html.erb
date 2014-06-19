@@ -1,0 +1,45 @@
+<%
+  options = { remote: true }
+  if test_plan.persisted?
+    options[:url] = test_plan_path(@project, test_plan)
+  else
+    options[:url] = test_plans_path(@project)
+  end
+%>
+<%= labelled_form_for test_plan, options do |f| %>
+  <div class="two-columns">
+    <div class="column">
+      <div class="two-columns">
+        <div class="column">
+          <p>
+            <%= f.date_select :start_on, label: 'Date Start', order: [ :day, :month, :year ] %>
+          </p>
+          <p>
+            <label for="test_plan_start_on">Time Start</label>
+            <%= f.time_select :start_on, label: false, ignore_date: true %>
+          </p>
+        </div>
+        <div class="column">
+          <p>
+            <%= f.date_select :finish_on, label: 'Date Finish', order: [ :day, :month, :year ] %>
+          </p>
+          <p>
+            <label for="test_plan_finish_on">Time Finish</label>
+            <%= f.time_select :finish_on, label: false, ignore_date: true %>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="two-columns">
+        <div class="column">
+          <%= f.text_area :summary, label: 'Summary', rows: 3 %>
+        </div>
+        <div class="column">
+          <%= f.select :test_plan_status_id, options_from_collection_for_select(TestPlanStatus.all, :id, :name), label: 'Status' %>
+          <%= submit_tag 'Save' %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

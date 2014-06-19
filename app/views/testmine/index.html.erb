@@ -24,4 +24,7 @@
   <%= stylesheet_link_tag 'testmine', :plugin => 'testmine' %>
   <%= javascript_include_tag 'modal', :plugin => 'testmine' %>
   <%= javascript_include_tag 'testmine', :plugin => 'testmine' %>
+  <script type="text/javascript">
+    var projectId = <%= @project.try(:identifier).to_i %>;
+  </script>
 <% end %>

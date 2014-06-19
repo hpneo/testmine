@@ -151,10 +151,37 @@ $(function() {
     e.preventDefault();
 
     var xhr = $.get($(this).attr('href'), { use_layout: false });
-
     xhr.done(function(data) {
       $('#add-test-case-modal-content').html(data);
       window.currentModal = Modal.show('add-test-case');
+    });
+  });
+
+  $(document).on('click', '#load_test_plan', function(e) {
+    e.preventDefault();
+
+    var testPlanId = $('#load_test_plan_id').val();
+
+    if (testPlanId === "") {
+      return false;
+    }
+
+    $.get('test/test_plan/' + testPlanId).done(function(html) {
+      $('#test_plan_content').html(html);
+    });
+
+    $.get('test/edit_test_plan/' + testPlanId).done(function(html) {
+      $('#test_plan_loader').find('form').replaceWith(html);
+    });
+  });
+
+  $(document).on('click', '#test_plan_test_executions a', function(e) {
+    e.preventDefault();
+
+    var xhr = $.get($(this).attr('href'));
+
+    xhr.done(function(html) {
+      $('#test_execution_form').find('form').replaceWith(html);
     });
   });
 

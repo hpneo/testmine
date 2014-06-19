@@ -4,4 +4,6 @@ class TestCaseStep < ActiveRecord::Base
   attr_accessible :item, :action, :expected_result, :test_case_id
 
   belongs_to :test_case
+
+  default_scope order('item ASC')
 end

@@ -1,0 +1,64 @@
+<%
+  options = { remote: true }
+  if test_execution.persisted?
+    options[:url] = test_execution_path(@project, test_execution)
+  else
+    options[:url] = test_executions_path(@project)
+  end
+%>
+<%= labelled_form_for test_execution, options do |f| %>
+  <%= f.fields_for :test_case do |p| %>
+    <p class="full-label">
+      <%= p.text_field :title, label: 'Title' %>
+    </p>
+    <p class="full-label">
+      <%= p.text_area :summary, label: 'Summary', rows: 3 %>
+    </p>
+    <p class="full-label">
+      <%= p.text_area :preconditions, label: 'Preconditions', rows: 2 %>
+    </p>
+    <div class="two-columns">
+      <div class="column">
+        <p>
+          <%= p.select :test_case_status_id, options_from_collection_for_select(TestCaseStatus.all, :id, :name), label: 'Status' %>
+        </p>
+        <p>
+          <%= p.select :test_case_execution_type_id, options_from_collection_for_select(TestCaseExecutionType.all, :id, :name), label: 'Type' %>
+        </p>
+      </div>
+      <div class="column">
+        <p>
+          <%= p.select :test_case_importance_id, options_from_collection_for_select(TestCaseImportance.all, :id, :name), label: 'Importance' %>
+        </p>
+        <p>
+          <%= p.number_field :duration, label: 'Time Exec. (min)' %>
+        </p>
+      </div>
+    </div>
+    <div id="test_case_steps">
+      <label id="test_case_step_item">#</label>
+      <label id="test_case_step_action">Steps Actions</label>
+      <label id="test_case_step_expected_result">Expected Result</label>
+      <%= p.fields_for :test_case_steps do |step_fields| %>
+        <div class="test_case_step" <%= step_fields.object.persisted? ? "id=\"test_case_step_#{step_fields.object.id}\"".html_safe : "" %>>
+          <%= step_fields.number_field :item, label: '', class: 'test_case_step_item' %>
+          <%= step_fields.text_field :action, label: '', class: 'test_case_step_action' %>
+          <%= step_fields.text_field :expected_result, label: '', class: 'test_case_step_expected_result' %>
+        </div>
+      <% end %>
+    </div>
+    <div class="two-columns">
+      <div class="column">
+        <%= f.text_area :comment, label: 'Comment', rows: 4 %>
+      </div>
+      <div class="column">
+        <% TestExecutionStatus.all.each do |execution_status| %>
+          <p>
+            <%= f.radio_button :test_execution_status_id, execution_status.id %>
+            <label for="test_execution_status_id_<%= execution_status.id %>"><%= execution_status.name %></label>
+          </p>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

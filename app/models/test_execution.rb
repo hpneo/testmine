@@ -10,6 +10,10 @@ class TestExecution < ActiveRecord::Base
 
   accepts_nested_attributes_for :test_case
 
+  def executed?
+    !self.test_execution_status.nil?
+  end
+
   def set_executed_by
     if self.test_plan
       if self.test_plan.finished?

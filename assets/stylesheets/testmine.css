@@ -111,3 +111,13 @@ h5 {
 #test_plan_test_plan_status_id {
   display: block;
 }
+
+.full-label label {
+  display: block;
+  width: 100%;
+}
+
+.full-label input, .full-label textarea, .full-label select {
+  display: block;
+  width: 100%;
+}
