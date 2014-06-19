@@ -4,6 +4,8 @@ class TestPlansController < ApplicationController
   before_filter :find_project
   before_filter :authorize, except: [ :add_test_case ]
 
+  after_filter :set_finish_on, on: [ :update ]
+
   def show
     @title = "View Test Plan"
     edit
@@ -79,5 +81,12 @@ class TestPlansController < ApplicationController
     identifier ||= params[:test_plan][:project_id] if params[:test_plan]
 
     @project = Project.find(identifier)
+  end
+
+  def set_finish_on
+    if @test_plan && @test_plan.finished?
+      @test_plan.finish_on = DateTime.now
+      @test_plan.save
+    end
   end
 end

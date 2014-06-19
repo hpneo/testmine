@@ -13,7 +13,6 @@ class TestPlan < ActiveRecord::Base
   has_many :test_cases, through: :test_executions
 
   before_create :set_created_by
-  before_save :set_finish_on
 
   def finished?
     if self.test_plan_status.nil?
@@ -35,11 +34,5 @@ class TestPlan < ActiveRecord::Base
 
   def set_created_by
     self.created_by = User.current
-  end
-
-  def set_finish_on
-    if finished?
-      self.finish_on = DateTime.now
-    end
   end
 end
