@@ -121,3 +121,13 @@ h5 {
   display: block;
   width: 100%;
 }
+
+#test_execution_status {
+  margin: 14px 0 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+#new_issue {
+  display: block;
+}

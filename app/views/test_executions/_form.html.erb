@@ -49,15 +49,19 @@
     </div>
     <div class="two-columns">
       <div class="column">
-        <%= f.text_area :comment, label: 'Comment', rows: 4 %>
+        <%= f.text_area :comment, label: 'Comment', rows: 6 %>
       </div>
       <div class="column">
-        <% TestExecutionStatus.all.each do |execution_status| %>
-          <p>
-            <%= f.radio_button :test_execution_status_id, execution_status.id %>
-            <label for="test_execution_status_id_<%= execution_status.id %>"><%= execution_status.name %></label>
-          </p>
-        <% end %>
+        <ul id="test_execution_status">
+          <% TestExecutionStatus.all.each do |execution_status| %>
+            <li>
+              <%= f.radio_button :test_execution_status_id, execution_status.id %>
+              <label for="test_execution_status_id_<%= execution_status.id %>"><%= execution_status.name %></label>
+            </li>
+          <% end %>
+        </ul>
+        <input type="button" id="new_issue" value="Bug" />
+        <%= f.submit 'Execute' %>
       </div>
     </div>
   <% end %>
