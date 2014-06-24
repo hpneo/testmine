@@ -185,6 +185,20 @@ $(function() {
     });
   });
 
+  $(document).on('click', '#new_issue', function(e) {
+    e.preventDefault();
+
+    var xhr = $.get('/projects/' + projectId + '/issues/new', {
+      'issue[subject]': ''
+    });
+
+    xhr.done(function(html) {
+      new Modal({
+        template: html
+      }).show();
+    })
+  });
+
   $(document).on('click', '.tabs a', function(e) {
     e.preventDefault();
 

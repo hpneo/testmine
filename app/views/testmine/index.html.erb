@@ -24,7 +24,11 @@
   <%= stylesheet_link_tag 'testmine', :plugin => 'testmine' %>
   <%= javascript_include_tag 'modal', :plugin => 'testmine' %>
   <%= javascript_include_tag 'testmine', :plugin => 'testmine' %>
+  <% heads_for_wiki_formatter %>
+  <% include_calendar_headers_tags %>
   <script type="text/javascript">
-    var projectId = <%= @project.try(:identifier).to_i %>;
+    var projectId = '<%= @project.try(:identifier) %>';
+    var issueField = 'issue_description';
+    var helpLink = '<%= "#{Redmine::Utils.relative_url_root}/help/#{current_language.to_s.downcase}/wiki_syntax.html" %>';
   </script>
 <% end %>

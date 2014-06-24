@@ -8,12 +8,17 @@ var onResize = function() {
 };
 
 var Modal = function Modal(options) {
-  var template = $('#' + options.modal + '-modal-content').html();
+  if (typeof options.template === 'string') {
+    this.template = options.template;
+  }
+  else {
+    this.template = $('#' + options.modal + '-modal-content').html();
+  }
 
   this.content = $('<div>', {
     class: 'modal',
     id: options.modal
-  }).html(template);
+  });
 
   this.overlay = $('#overlay');
 
@@ -85,10 +90,13 @@ Modal.prototype.showOverlay = function(callback) {
 Modal.prototype.show = function() {
   if (this.content.length > 0) {
     var modal = this.content.hide();
+    var template = this.template;
 
     this.overlay.html(modal);
 
     this.showOverlay(function() {
+      modal.html(template);
+
       var modalHeight = window.innerHeight - 30,
           marginTop = (window.innerHeight - modal.height()) / 2,
           marginLeft = (window.innerWidth - modal.width()) / 2;

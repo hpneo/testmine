@@ -6,7 +6,7 @@
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.7);
-  z-index: 111;
+  z-index: 23;
 }
 
 .no-scroll {
@@ -23,23 +23,25 @@ div.modal {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
+  max-height: 600px;
+  overflow: auto;
 }
 
-div.modal label {
+div.modal form:not(#issue-form) label {
   display: block;
 }
 
-div.modal .inline label {
+div.modal form:not(#issue-form) .inline label {
   display: inline-block;
 }
 
-div.modal input[type="text"],
-div.modal textarea {
+div.modal form:not(#issue-form) input[type="text"],
+div.modal form:not(#issue-form) textarea {
   width: 100%;
   font-family: inherit;
 }
 
-div.modal input[type="number"] {
+div.modal form:not(#issue-form) input[type="number"] {
   width: 100px;
 }
 
