@@ -1,7 +1,7 @@
 <fieldset id="test_plan_loader">
   <legend>Test Plan</legend>
   <p>
-    <%= select_tag('load_test_plan_id', options_from_collection_for_select(TestPlan.all, :id, :title), { prompt: '- Seleccione -' }) %>
+    <%= select_tag('load_test_plan_id', options_from_collection_for_select(@project.test_plans, :id, :title), { prompt: '- Seleccione -' }) %>
     <input type="button" id="load_test_plan" value="Load" />
   </p>
   <%= render partial: 'testmine/test_plan_form', locals: { test_plan: TestPlan.new } %>
