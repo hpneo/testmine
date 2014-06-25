@@ -23,6 +23,7 @@ div.modal {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
+  min-width: 600px;
   max-height: 600px;
   overflow: auto;
 }
