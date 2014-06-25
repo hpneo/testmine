@@ -48,29 +48,29 @@ div.modal form:not(#issue-form) input[type="number"] {
 
 label#test_case_step_item,
 input.test_case_step_item {
-  display: inline-block;
-  width: 40px;
+  display: inline-block !important;
+  width: 40px !important;
 }
 
 label#test_case_step_action,
 input.test_case_step_action {
-  display: inline-block;
-  width: 200px;
+  display: inline-block !important;
+  width: 200px !important;
 }
 
 label#test_case_step_expected_result,
 input.test_case_step_expected_result {
-  display: inline-block;
-  width: 200px;
+  display: inline-block !important;
+  width: 200px !important;
 }
 
 label#add_test_case_step {
-  display: inline-block;
+  display: inline-block !important;
   width: 16px;
 }
 
 label#add_test_case_step img {
-  display: inline-block;
+  display: inline-block !important;
   vertical-align: middle;
   margin-left: 10px;
 }
