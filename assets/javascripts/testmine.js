@@ -199,6 +199,24 @@ $(function() {
     })
   });
 
+  $(document).on('submit', '#issue-form', function(e) {
+    e.preventDefault();
+
+    var url = $(this).attr('action');
+    var formData = new FormData($(this)[0]);
+
+    $.ajax({
+      url: url + '.json',
+      processData: false,
+      contentType: false,
+      dataType: 'json',
+      data: formData,
+      type: 'POST'
+    }).done(function(response) {
+      var issueId = response.issue.id;
+    })
+  });
+
   $(document).on('click', '.tabs a', function(e) {
     e.preventDefault();
 

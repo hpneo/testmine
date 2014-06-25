@@ -17,6 +17,8 @@
 `RAILS_ENV=production ruby script/rails generate redmine_plugin_model Testmine TestPlanStatus name:string description:text`
 `RAILS_ENV=production ruby script/rails generate redmine_plugin_model Testmine TestPlan title:string summary:text start_on:datetime finish_on:datetime created_by_user_id:integer executed_by_user_id:integer test_plan_status:references`
 
+`RAILS_ENV=production ruby script/rails generate redmine_plugin_model Testmine TestExecutionIssue test_execution:references issue:references`
+
 ## Install models
 
 `RAILS_ENV=production rake redmine:plugins:migrate`
