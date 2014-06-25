@@ -11,6 +11,7 @@ class TestExecutionsController < ApplicationController
     @test_execution.test_plan_id = params[:test_execution][:test_plan_id]
     @test_execution.test_case_id = params[:test_execution][:test_case_id]
     @test_case = TestCase.find(params[:test_execution][:test_case_id])
+    @test_plan ||= TestPlan.find(params[:test_execution][:test_plan_id])
 
     if @test_execution.save
       render 'create.js'
