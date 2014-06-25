@@ -188,7 +188,7 @@ $(function() {
   $(document).on('click', '#new_issue', function(e) {
     e.preventDefault();
 
-    var xhr = $.get('projects/' + projectId + '/issues/new', {
+    var xhr = $.get('issues/new', {
       'issue[subject]': ''
     });
 
