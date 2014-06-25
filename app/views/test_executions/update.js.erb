@@ -1,0 +1,5 @@
+var xhr = $.get('<%= testmine_test_execution_path(@project, @test_execution) %>');
+
+xhr.done(function(html) {
+  $('#test_execution_form').find('form').replaceWith(html);
+});

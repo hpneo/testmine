@@ -193,7 +193,7 @@ $(function() {
     });
 
     xhr.done(function(html) {
-      new Modal({
+      window.currentModal = new Modal({
         template: html
       }).show();
     })
@@ -205,16 +205,33 @@ $(function() {
     var url = $(this).attr('action');
     var formData = new FormData($(this)[0]);
 
-    $.ajax({
+    var issueXhr = $.ajax({
       url: url + '.json',
       processData: false,
       contentType: false,
       dataType: 'json',
       data: formData,
       type: 'POST'
+    });
+
+    issueXhr.done(function(response) {
+      var xhr = $.ajax({
+        url: 'test_execution_issues',
+        dataType: 'json',
+        data: {
+          test_execution_issue: {
+            issue_id: response.issue.id,
+            test_execution_id: $('input#new_issue').data('id')
+          }
+        },
+        type: 'POST'
+      });
+
+      return xhr;
     }).done(function(response) {
-      var issueId = response.issue.id;
-    })
+      //response.test_execution_issue
+      window.currentModal.close();
+    });
   });
 
   $(document).on('click', '.tabs a', function(e) {

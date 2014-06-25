@@ -1,7 +1,8 @@
 class TestPlan < ActiveRecord::Base
   unloadable
 
-  attr_accessible :title, :summary, :start_on, :finish_on, :created_by_user_id, :executed_by_user_id, :project_id
+  attr_accessible :title, :summary, :start_on, :finish_on
+  attr_accessible :created_by_user_id, :executed_by_user_id, :project_id, :test_plan_status_id
 
   belongs_to :project
 

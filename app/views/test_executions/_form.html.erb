@@ -60,8 +60,12 @@
             </li>
           <% end %>
         </ul>
-        <input type="button" id="new_issue" value="Bug" disabled="disabled" />
-        <%= f.submit 'Execute' %>
+        <input type="button" id="new_issue" value="Bug" <%= !test_execution.persisted? ? 'disabled="disabled"'.html_safe : '' %> data-id="<%= test_execution.try(:id) %>" />
+        <% if test_execution.test_plan %>
+          <%= f.submit 'Execute', disabled: test_execution.test_plan.finished? %>
+        <% else %>
+          <%= f.submit 'Execute', disabled: true %>
+        <% end %>
       </div>
     </div>
   <% end %>

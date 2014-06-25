@@ -13,6 +13,7 @@ scope '/projects/:project_id' do
     end
   end
   resources :test_executions
+  resources :test_execution_issues
 end
 
 get '/projects/:project_id/test', :to => 'testmine#index', as: 'testmine_index'
