@@ -88,7 +88,7 @@ label#test_case_step_expected_result {
 }
 
 .test_case_step label {
-  display: none;
+  display: none !important;
 }
 
 .test_case_step img {
