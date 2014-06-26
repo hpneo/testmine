@@ -23,9 +23,14 @@
 
 `RAILS_ENV=production rake redmine:plugins:migrate`
 
+## Dependencies
+
+Enable Redmine API
+
 ## Structure
 
 ```
+
 Project
   Test Suite
     Test Case
