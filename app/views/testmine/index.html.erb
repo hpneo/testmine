@@ -30,5 +30,6 @@
     var projectId = '<%= @project.try(:identifier) %>';
     var issueField = 'issue_description';
     var helpLink = '<%= "#{Redmine::Utils.relative_url_root}/help/#{current_language.to_s.downcase}/wiki_syntax.html" %>';
+    var permissions = <%= User.current.roles_for_project(@project).first.send(:allowed_permissions).to_json.html_safe %>;
   </script>
 <% end %>

@@ -5,6 +5,7 @@ $(function() {
     var menu = $(this).parents('h4').find('ul');
     menu.slideToggle();
   });
+
   $(document).on('click', '.test_suite_test_cases h5', function(e) {
     e.preventDefault();
 
@@ -26,7 +27,12 @@ $(function() {
   $(document).on('click', '.show-new-test-suite', function(e) {
     e.preventDefault();
 
-    window.currentModal = Modal.show('new-test-suite');
+    if (permissions.indexOf('create_test_suite') != -1) {
+      window.currentModal = Modal.show('new-test-suite');
+    }
+    else {
+      alert("You don't have permissions to perform this action");
+    }
   });
 
   $(document).on('click', '.show-edit-test-suite', function(e) {
@@ -133,7 +139,12 @@ $(function() {
   $(document).on('click', '.show-new-test-plan', function(e) {
     e.preventDefault();
 
-    window.currentModal = Modal.show('new-test-plan');
+    if (permissions.indexOf('create_test_plan') != -1) {
+      window.currentModal = Modal.show('new-test-plan');
+    }
+    else {
+      alert("You don't have permissions to perform this action");
+    }
   });
 
   $(document).on('click', '.show-edit-test-plan', function(e) {

@@ -2,7 +2,7 @@ class TestPlansController < ApplicationController
   unloadable
 
   before_filter :find_project
-  before_filter :authorize, except: [ :add_test_case ]
+  before_filter :authorize#, except: [ :add_test_case ]
 
   after_filter :set_finish_on, on: [ :update ]
 
