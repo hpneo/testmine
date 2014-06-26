@@ -279,4 +279,10 @@ $(function() {
   }
 
   $('.tabs').find('a[href="#tab_' + currentTab + '"]').click();
+
+  $(document).ajaxError(function(e, xhr, settings, errorName){
+    if (xhr.status === 403) {
+      alert("You don't have permissions to perform this action");
+    }
+  });
 });
