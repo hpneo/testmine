@@ -57,6 +57,10 @@ class TestPlansController < ApplicationController
     @test_execution = TestExecution.new
     @test_execution.test_plan_id = @test_plan.id
 
+    @existing_test_cases = @test_plan.test_cases.pluck(:id).uniq
+
+    puts @existing_test_cases.inspect
+
     if params[:use_layout] == "yes"
       use_layout = true
     else

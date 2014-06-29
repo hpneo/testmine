@@ -13,8 +13,12 @@ class TestExecutionsController < ApplicationController
     @test_case = TestCase.find(params[:test_execution][:test_case_id])
     @test_plan ||= TestPlan.find(params[:test_execution][:test_plan_id])
 
-    if @test_execution.save
-      render 'create.js'
+    if @test_execution.test_plan.finished?
+      render 'create_failed.js'
+    else
+      if @test_execution.save
+        render 'create.js'
+      end
     end
   end
 

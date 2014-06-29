@@ -2,7 +2,14 @@
 
 <%= labelled_form_for @test_execution, remote: true do |f| %>
   <p>
-    <%= f.select :test_case_id, option_groups_from_collection_for_select(@project.test_suites, :test_cases, :name, :id, :title, @test_execution.test_case_id), { label: 'Select Test Case' }, { size: 3 } %>
+    <%
+      if @existing_test_cases.empty?
+        condition = :test_cases
+      else
+        condition = "test_cases.where('test_cases.id NOT IN (?)', #{@existing_test_cases})"
+      end
+    %>
+    <%= f.select :test_case_id, option_groups_from_collection_for_select(@project.test_suites, condition, :name, :id, :title, @test_execution.test_case_id), { label: 'Select Test Case' }, { size: 3 } %>
   </p>
   <%= f.hidden_field :test_plan_id %>
   <%= submit_tag 'Save' %>
