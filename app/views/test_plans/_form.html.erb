@@ -45,10 +45,10 @@
     </div>
   </div>
   <p>
-    <%= f.select :created_by_user_id, options_from_collection_for_select(User.all, :id, :name, User.current.id), label: 'Create by' %>
+    <%= f.select :created_by_user_id, options_from_collection_for_select(User.all, :id, :name, @test_plan.created_by_user_id || User.current.id), label: 'Create by' %>
   </p>
   <p>
-    <%= f.select :executed_by_user_id, options_from_collection_for_select(User.all, :id, :name), label: 'Execution by', include_blank: true %>
+    <%= f.select :executed_by_user_id, options_from_collection_for_select(User.all, :id, :name, @test_plan.executed_by_user_id), label: 'Execution by', include_blank: true %>
   </p>
   <%= f.hidden_field :project_id %>
   <%= submit_tag 'Save' %>
