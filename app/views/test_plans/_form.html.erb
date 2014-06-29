@@ -51,6 +51,6 @@
     <%= f.select :executed_by_user_id, options_from_collection_for_select(User.all, :id, :name, @test_plan.executed_by_user_id), label: 'Execution by', include_blank: true %>
   </p>
   <%= f.hidden_field :project_id %>
-  <%= submit_tag 'Save' %>
+  <%= submit_tag 'Save', disabled: @disabled_form %>
   <input type="reset" value="Cancelar" class="close-modal" />
 <% end %>

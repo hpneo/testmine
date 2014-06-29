@@ -64,7 +64,7 @@
   </div>
 
   <%= f.hidden_field :test_suite_id %>
-  <%= submit_tag 'Save' %>
+  <%= submit_tag 'Save', disabled: @disabled_form %>
   <input type="reset" value="Cancelar" class="close-modal" />
 <% end %>
 

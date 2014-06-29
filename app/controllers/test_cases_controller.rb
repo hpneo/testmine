@@ -13,6 +13,7 @@ class TestCasesController < ApplicationController
 
   def show
     @title = "View Test Case"
+    @disabled_form = true
     edit
   end
 

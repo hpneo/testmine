@@ -8,6 +8,7 @@ class TestPlansController < ApplicationController
 
   def show
     @title = "View Test Plan"
+    @disabled_form = true
     edit
   end
 

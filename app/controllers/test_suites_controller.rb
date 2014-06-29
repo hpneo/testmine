@@ -10,6 +10,7 @@ class TestSuitesController < ApplicationController
 
   def show
     @title = "View Test Suite"
+    @disabled_form = true
     edit
   end
 
