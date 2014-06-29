@@ -3,6 +3,7 @@ $(function() {
     e.preventDefault();
 
     var menu = $(this).parents('h4').find('ul');
+    $('ul.menu:visible').not(menu[0]).slideUp();
     menu.slideToggle();
   });
 
@@ -10,6 +11,7 @@ $(function() {
     e.preventDefault();
 
     var menu = $(this).siblings('ul');
+    $('ul.menu:visible').not(menu[0]).slideUp();
     menu.slideToggle();
   });
 
