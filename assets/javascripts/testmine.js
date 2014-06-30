@@ -247,6 +247,28 @@ $(function() {
     });
   });
 
+  $(document).on('ajax:beforeSend', '.modal .new_test_plan, .modal .edit_test_plan', function(e) {
+    var startOn = {
+      year: $(this).find('#test_plan_start_on_1i').val(),
+      month: $(this).find('#test_plan_start_on_2i').val() - 1,
+      day: $(this).find('#test_plan_start_on_3i').val(),
+      hour: $(this).find('#test_plan_start_on_4i').val(),
+      minute: $(this).find('#test_plan_start_on_5i').val()
+    };
+
+    var finishOn = {
+      year: $(this).find('#test_plan_finish_on_1i').val(),
+      month: $(this).find('#test_plan_finish_on_2i').val() - 1,
+      day: $(this).find('#test_plan_finish_on_3i').val(),
+      hour: $(this).find('#test_plan_finish_on_4i').val(),
+      minute: $(this).find('#test_plan_finish_on_5i').val()
+    };
+
+    var isValid = new Date(finishOn.year, finishOn.month, finishOn.day, finishOn.hour, finishOn.minute) > new Date(startOn.year, startOn.month, startOn.day, startOn.hour, startOn.minute);
+
+    return isValid;
+  });
+
   $(document).on('click', '.tabs a', function(e) {
     e.preventDefault();
 
