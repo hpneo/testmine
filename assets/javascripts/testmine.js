@@ -309,4 +309,33 @@ $(function() {
       alert("You don't have permissions to perform this action");
     }
   });
+
+  $('.test_suite_test_cases').children('li').draggable({
+    revert: 'invalid'
+  });
+
+  $('.test_suite_test_cases').droppable({
+    activeClass: 'ui-state-default',
+    drop: function(e, ui) {
+      var testCaseId = ui.draggable.attr('id').replace('test_case_', ''),
+          testSuiteId = ui.draggable.parents('li').first().attr('id').replace('test_suite_', ''),
+          self = $(this),
+          newTestSuiteId = self.parents('li').first().attr('id').replace('test_suite_', '');
+
+      $.getJSON('test_cases/' + testCaseId + '/move?test_suite_id=' + testSuiteId).then(function(data) {
+        $.ajax({
+          type: 'POST',
+          url: 'test_suite_test_cases/' + data.test_suite_test_case.id,
+          dataType: 'script',
+          data: {
+            _method: 'put',
+            test_suite_test_case: {
+              test_suite_id: newTestSuiteId
+            },
+            previous_test_suite_id: testSuiteId
+          }
+        });
+      });
+    }
+  });
 });

@@ -82,7 +82,15 @@ class TestCasesController < ApplicationController
       use_layout = false
     end
 
-    render :move, layout: use_layout
+    respond_to do |format|
+      format.html do
+        render :move, layout: use_layout
+      end
+
+      format.json do
+        render json: @test_suite_test_case
+      end
+    end
   end
 
   def delete_test_case_step
